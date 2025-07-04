@@ -56,7 +56,26 @@ if __name__ == "__main__":
         if escolha in("1","2","3"):
             try:   
                 velocidade = float(input("Qual a velocidade em que seguia o seu carro (km/h): "))
+            except ValueError:
+                print("Erro, o numero que inseriu nao é valido por favor insira um número válido.")
+                continue
             
+            
+            if escolha == "1":
+                multa = multa_localidade(velocidade)
+            
+            elif escolha == "2":
+                multa = multa_fora_localidade(velocidade)
+            
+            elif escolha == "3":
+                multa = multa_autoestrada(velocidade)
+
+            if multa == 0:
+                print("Sem multa. Condução dentro do limite de velocidade.")
+            else:
+                print(f"Multa a pagar: {multa}€")
+        else:
+            print("Opção não é válida. Por favor, tente outra vez")
         
         
 
